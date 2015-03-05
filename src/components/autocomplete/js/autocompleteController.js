@@ -155,11 +155,14 @@
     }
 
     function select (index) {
-      $scope.selectedItem = self.matches[index];
-      $scope.searchText = getDisplayValue($scope.selectedItem) || $scope.searchText;
-      self.hidden = true;
+      var selected = ($scope.multiSelect === true && index > -1) ? self.matches.splice(index, 1) : null;
+      $scope.selectedItem = ($scope.multiSelect === true) ? selected : self.matches[index];
+      if ($scope.multiSelect !== true){
+        $scope.searchText = getDisplayValue($scope.selectedItem) || $scope.searchText;
+      }
+      self.hidden = ($scope.multiSelect === true) ? false : true;
       self.index = -1;
-      self.matches = [];
+      self.matches = ($scope.multiSelect === true) ? self.matches : [];
     }
 
     function updateScroll () {

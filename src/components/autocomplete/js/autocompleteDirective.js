@@ -83,6 +83,7 @@
       scope:        {
         searchText:   '=mdSearchText',
         selectedItem: '=mdSelectedItem',
+        multiSelect: '=mdMultiSelect',
         itemsExpr:    '@mdItems',
         itemText:     '&mdItemText',
         placeholder:  '@placeholder',
